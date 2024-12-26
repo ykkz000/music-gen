@@ -83,9 +83,8 @@ int parse_notation(notation_t *notation, FILE *file, int major, double unit_peri
     // 初始化缓冲区
     buffer = NULL;
     // 读取文件直到文件结束
-    while (!feof(file))
+    while (!feof(file) && getline(&buffer, &buffer_size, file))
     {
-        getline(&buffer, &buffer_size, file);
         // 如果行首字符不是#且不是空行
         if (buffer[0] != '#' && buffer[0] != 0 && buffer[0] != '\n' && buffer[0] != '\r')
         {

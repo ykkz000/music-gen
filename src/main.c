@@ -44,8 +44,10 @@ int main(int argc, char *argv[])
     // 循环生成样本数据
     while ((ret = fill_with_sampled_notation(&streamed_sampled_notation, buffer, frame_samples * (16 / 8))) > 0)
     {
+        // 帧数加1
+        num_frames++;
         // 记录生成的帧数
-        LOG_DEBUG("Generated %d frames.", (++num_frames));
+        LOG_DEBUG("Generated %d frames.", num_frames);
         // 累加样本数
         num_samples += ret / (16 / 8);
         // 将缓冲区数据写入输出文件
